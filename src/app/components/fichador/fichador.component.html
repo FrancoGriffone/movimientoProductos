@@ -1,5 +1,27 @@
 <div class="contenedor">
     <div class="card card-body">
-        
+        <h1><b>Fichar productos</b></h1>
+        <div class="fechas">
+            <mat-form-field class="spacingComponents">
+                <mat-label>Selecciona fecha inicial</mat-label>
+                <input matInput [matDatepicker]="picker" [formControl]="fechaInicio">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Selecciona fecha final</mat-label>
+                <input matInput [matDatepicker]="pickers" [formControl]="fechaFinal">
+                <mat-datepicker-toggle matIconSuffix [for]="pickers"></mat-datepicker-toggle>
+                <mat-datepicker #pickers></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="fichador">
+            <mat-form-field class="spacingComponents" appearance="fill">
+                <mat-label>Fichar productos</mat-label>
+                <!-- CON EL CODIGO, BUSCA TODOS LOS MOVIMIENTOS EXISTENTES -->
+                <input matInput>
+            </mat-form-field>
+            <button class="btn btn-primary" style="width: 20%; height: 30%;">Buscar</button>
+        </div>
     </div>
 </div>
