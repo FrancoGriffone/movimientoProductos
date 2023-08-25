@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FichadorComponent } from './components/fichador/fichador.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FichadorComponent
   ],
   imports: [
     BrowserModule,
