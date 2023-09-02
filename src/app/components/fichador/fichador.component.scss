@@ -9,20 +9,40 @@
         border: 1px solid black;
         text-align: center;
         max-width: 80%;
-        .fechas {
-            display: flex;
-            flex-wrap: nowrap;
-            mat-form-field {
-                width: 100%;
-            }
+    }
+}
+
+@media screen and (max-width: 600px){
+    .fechas {
+        display: flex;
+        flex-wrap: wrap;
+        mat-form-field {
+            width: 100%;
         }
-        .fichador {
-            display: flex;
-            align-items: center;
-            flex-wrap: nowrap;
-            mat-form-field {
-                width: 100%;
-            }
+    }
+    .fichador {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        mat-form-field {
+            width: 100%;
+        }
+    }
+}
+@media screen and (min-width: 600px){
+    .fechas {
+        display: flex;
+        flex-wrap: nowrap;
+        mat-form-field {
+            width: 100%;
+        }
+    }
+    .fichador {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        mat-form-field {
+            width: 100%;
         }
     }
 }
