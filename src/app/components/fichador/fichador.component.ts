@@ -26,14 +26,14 @@ export class FichadorComponent {
     if (this.prueba == true){
       Swal.fire({
         title: 'No se encontraron datos',
-        text: `Verifique las fechas y el código para poder intentar nuevamente`,
+        text: `Verifique las fechas y el código para poder intentar nuevamente.`,
         icon: 'question',
         confirmButtonText: 'Volver atrás'
       })
     } else {
       Swal.fire({
-        title: 'Error!',
-        text: `No existen movimientos del producto fichado. Verifique las fechas y el código`,
+        title: '¡Error!',
+        text: `No existen movimientos del producto fichado. Verifique las fechas y el código.`,
         icon: 'error',
         confirmButtonText: 'Volver atrás'
       })
