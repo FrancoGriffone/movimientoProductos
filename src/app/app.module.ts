@@ -22,6 +22,17 @@ import { FichadorComponent } from './components/fichador/fichador.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+//PRIME NG
+import { SpeedDialModule } from 'primeng/speeddial';
+import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
+import { DialogModule } from 'primeng/dialog';
+import { TooltipModule } from 'primeng/tooltip';
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -46,6 +57,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDatepickerModule,
     MatSlideToggleModule,
     MatDialogModule,
+    SpeedDialModule,
+    CalendarModule,
+    DropdownModule,
+    DialogModule,
+    TooltipModule,
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }

@@ -1,27 +1,69 @@
 <div class="contenedor">
+    <p-speedDial [model]="items" direction="right"></p-speedDial>
     <div class="card card-body">
         <h1><b>Fichar productos</b></h1>
-        <div class="fechas">
-            <mat-form-field class="spacingComponents">
-                <mat-label>Selecciona fecha inicial</mat-label>
-                <input matInput [matDatepicker]="picker" [formControl]="fechaInicio">
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Selecciona fecha final</mat-label>
-                <input matInput [matDatepicker]="pickers" [formControl]="fechaFinal">
-                <mat-datepicker-toggle matIconSuffix [for]="pickers"></mat-datepicker-toggle>
-                <mat-datepicker #pickers></mat-datepicker>
-            </mat-form-field>
+        <div class="fechas mt-2">
+            <p-calendar 
+                [showIcon]="true" 
+                [formControl]="fechaInicio" 
+                dateFormat="dd/mm/yy" 
+                class="mt-2" 
+                [style]="{ width: '100%' }"
+                pTooltip="Fecha a partir de cuando es la búsqueda" tooltipPosition="bottom"
+                ></p-calendar>
+            <p-dropdown 
+                [options]="cities" 
+                [(ngModel)]="selectedCity" 
+                placeholder="Selecciona uno"  
+                [editable]="true" 
+                optionLabel="name" 
+                class="mt-2" 
+                [style]="{ width: '100%' }"></p-dropdown>
+            <p-calendar 
+                [showIcon]="true" 
+                [formControl]="fechaFinal" 
+                dateFormat="dd/mm/yy" 
+                class="mt-2" 
+                [style]="{ width: '100%' }"
+                pTooltip="Fecha hasta donde se busca" tooltipPosition="bottom"></p-calendar>
         </div>
-        <div class="fichador">
-            <mat-form-field class="spacingComponents" appearance="fill">
-                <mat-label>Fichar productos</mat-label>
-                <!-- CON EL CODIGO, BUSCA TODOS LOS MOVIMIENTOS EXISTENTES -->
-                <input matInput>
-            </mat-form-field>
-            <button class="btn btn-primary" (click)="onSubmit()">Buscar</button>
+        <div class="fichador mt-4">
+            <div class="p-inputgroup">
+                <input type="text" pInputText placeholder="Ficha o escribe el código del producto a buscar" pTooltip="El producto que fiches va a mostrar los movimientos entre las fechas colocadas" tooltipPosition="bottom"/>
+                <button type="button" pButton icon="pi pi-search" iconPos="right" (click)="onSubmit()"></button>
+            </div>
+            <p-dialog 
+                header="Movimientos de producto" 
+                [(visible)]="visible" 
+                [modal]="true" 
+                [style]="{ width: '80vw' }" 
+                [draggable]="false" 
+                [resizable]="false"
+                [maximizable]="true">
+                <p class="m-0">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <ng-template pTemplate="footer">
+                    <p-button icon="pi pi-check" (click)="visible = false" label="OK" styleClass="p-button-text"></p-button>
+                </ng-template>
+            </p-dialog>
         </div>
     </div>
 </div>
