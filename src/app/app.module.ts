@@ -28,6 +28,12 @@ import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { DialogModule } from 'primeng/dialog';
 import { TooltipModule } from 'primeng/tooltip';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
+import { SidebarModule } from 'primeng/sidebar';
+
+
+
 
 
 
@@ -62,6 +68,9 @@ import { TooltipModule } from 'primeng/tooltip';
     DropdownModule,
     DialogModule,
     TooltipModule,
+    ConfirmDialogModule,
+    ToastModule,
+    SidebarModule,
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }

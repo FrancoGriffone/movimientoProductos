@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import * as dayjs from 'dayjs'
-import { MenuItem, MessageService } from 'primeng/api';
+import { ConfirmEventType, ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 import Swal from 'sweetalert2';
 
 interface City {
@@ -13,10 +13,11 @@ interface City {
   selector: 'app-fichador',
   templateUrl: './fichador.component.html',
   styleUrls: ['./fichador.component.scss'],
-  providers: [MessageService]
+  providers: [MessageService, ConfirmationService]
 
 })
 export class FichadorComponent {
+  position: string = 'center';
 
   items: MenuItem[] | null; //ITEMS DEL SPEEDDIAL
 
@@ -25,6 +26,8 @@ export class FichadorComponent {
   selectedCity: City | undefined; //ELEMENTO SELECCIONADO
 
   visible: boolean = false;
+
+  sidebarVisible2: boolean = false;
 
   prueba: boolean = true
 
@@ -36,7 +39,7 @@ export class FichadorComponent {
   fechaInicio = new FormControl(this.fechaBusqueda);
   fechaFinal = new FormControl(this.fecha);
 
-  constructor(private messageService: MessageService) {
+  constructor(private messageService: MessageService, private confirmationService: ConfirmationService) {
     this.items = [
       {
         icon: 'pi pi-globe',
@@ -108,5 +111,29 @@ export class FichadorComponent {
     }
   }
 
+  confirmPosition(position: string) {
+    this.position = position;
 
+    this.confirmationService.confirm({
+        message: '¿Estás seguro de querer confirmar los datos?',
+        header: 'Confirmación de datos',
+        icon: 'pi pi-info-circle',
+        acceptLabel: 'Si',
+        rejectLabel: 'No',
+        accept: () => {
+            this.messageService.add({ severity: 'info', summary: 'Confirmado', detail: '¡Los datos fueron confirmados con éxito!' });
+        },
+        reject: (type: ConfirmEventType) => {
+            switch (type) {
+                case ConfirmEventType.REJECT:
+                    this.messageService.add({ severity: 'error', summary: 'Rechazado', detail: 'Se denegó la confirmación de datos.' });
+                    break;
+                case ConfirmEventType.CANCEL:
+                    this.messageService.add({ severity: 'warn', summary: 'Acción cancelada', detail: 'Se canceló la acción. Presiona el botón de nuevo si deseas confirmar o no los datos.' });
+                    break;
+            }
+        },
+        key: 'positionDialog'
+    });
+  }
 }
